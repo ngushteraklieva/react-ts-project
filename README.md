@@ -29,16 +29,14 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/yourusername/note-taking-app.git
 
+
 2. Navigate into the project directory:
-  ```bash
-  cd note-taking-app
+  ```bash cd note-taking-app
+
 
 3. Install dependencies:
-  ```bash
-  npm install  
+  ```bash npm install  
+
 
 4. Start the development server:
-  ```bash
-  npm run dev
-
-
+  ```bash npm run dev
