@@ -5,6 +5,7 @@ import { NewNote } from "./NewNote"
 import { useLocalStorage } from "./useLocalStorage"
 import { useMemo } from "react"
 import { v4 as uuidV4} from "uuid"
+import { NoteList } from "./NoteList"
 
 export type Note = {
   id: string
@@ -35,9 +36,9 @@ function App(){
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
   const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", [])
 
-  const notesWithTags = useMemo(()=>{
-    return notes.map(note=>{
-      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id))}
+  const notesWithTags = useMemo(() => {
+    return notes.map(note => {
+      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id)) }
     })
   }, [notes, tags])
 
@@ -57,7 +58,7 @@ function App(){
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="" element={<h1>home</h1>}/>
+        <Route path="" element={ <NoteList availableTags={tags} notes={notesWithTags}/>}/>
         <Route path="/new" element={
           <NewNote 
             onSubmit={onCreatenote} 
